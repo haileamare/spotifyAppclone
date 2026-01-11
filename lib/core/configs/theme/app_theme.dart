@@ -7,7 +7,12 @@ class AppTheme{
     scaffoldBackgroundColor:AppColors.lightBackground,
     brightness:Brightness.light,
     fontFamily:"Satoshi",
-  
+     inputDecorationTheme: InputDecorationTheme(
+      filled:true,
+      fillColor:Colors.transparent,
+      border:OutlineInputBorder(),
+      
+     ),
     elevatedButtonTheme:ElevatedButtonThemeData(
        style: ElevatedButton.styleFrom(
         backgroundColor:AppColors.primary,

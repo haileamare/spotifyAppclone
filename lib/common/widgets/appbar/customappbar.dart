@@ -2,7 +2,7 @@ import 'package:clonespotify/common/helpers/is_dark_mode.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget{
-  const CustomAppBar({super.key,
+  const CustomAppBar(bool bool, {super.key,
    this.hideBackButton=false,
    this.title,
    this.action,
@@ -15,9 +15,10 @@ class CustomAppBar extends StatelessWidget{
   Widget build(BuildContext context){
     return AppBar(
       backgroundColor:Colors.transparent,
-      centerTitle:true,
       elevation: 0,
+      centerTitle: true,
       actions:[action??Container()],
+      title:title??Text(''),
       leading:hideBackButton?Container()
       :IconButton(
         onPressed:(){
@@ -42,4 +43,6 @@ class CustomAppBar extends StatelessWidget{
       ),
     );
   }
+
+ Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
