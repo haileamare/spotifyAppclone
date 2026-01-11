@@ -7,9 +7,11 @@ class AppTheme{
     scaffoldBackgroundColor:AppColors.lightBackground,
     brightness:Brightness.light,
     fontFamily:"Satoshi",
+  
     elevatedButtonTheme:ElevatedButtonThemeData(
        style: ElevatedButton.styleFrom(
         backgroundColor:AppColors.primary,
+        foregroundColor:Colors.white,
         textStyle: const TextStyle(fontSize:20,fontWeight:FontWeight.bold),
         shape:RoundedRectangleBorder(
           borderRadius:BorderRadius.circular(30)
@@ -25,6 +27,7 @@ class AppTheme{
     elevatedButtonTheme:ElevatedButtonThemeData(
        style: ElevatedButton.styleFrom(
         backgroundColor:AppColors.primary,
+        foregroundColor:Colors.white,
         textStyle: const TextStyle(fontSize:20,fontWeight:FontWeight.bold),
         shape:RoundedRectangleBorder(
           borderRadius:BorderRadius.circular(30)
