@@ -1,4 +1,4 @@
-import 'package:clonespotify/common/widgets/common_button.dart';
+import 'package:clonespotify/common/widgets/button/common_button.dart';
 import 'package:clonespotify/core/configs/assets/app_images.dart';
 import 'package:clonespotify/core/configs/assets/app_vectors.dart';
 import 'package:clonespotify/core/configs/theme/app_colors.dart';

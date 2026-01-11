@@ -1,9 +1,10 @@
 import 'dart:ui';
 
-import 'package:clonespotify/common/widgets/common_button.dart';
+import 'package:clonespotify/common/widgets/button/common_button.dart';
 import 'package:clonespotify/core/configs/assets/app_vectors.dart';
 import 'package:clonespotify/core/configs/theme/app_colors.dart';
 import 'package:clonespotify/core/configs/theme/app_theme.dart';
+import 'package:clonespotify/presentation/auth/pages/signinorsignuppage.dart';
 import 'package:clonespotify/presentation/choosemode/bloc/themecubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -124,7 +125,11 @@ class ChooseModePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 40),
-                CustomButton(onPressed: () {}, title: "Continue", height: 70),
+                CustomButton(onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(
+                  builder:(context)=> const SigninorSignupPage()
+                  ));
+                }, title: "Continue", height: 70),
               ],
             ),
           ),
