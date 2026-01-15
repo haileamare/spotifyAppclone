@@ -2,14 +2,13 @@ import 'package:clonespotify/common/helpers/is_dark_mode.dart';
 import 'package:clonespotify/common/widgets/appbar/customappbar.dart';
 import 'package:clonespotify/common/widgets/button/common_button.dart';
 import 'package:clonespotify/core/configs/assets/app_vectors.dart';
-import 'package:clonespotify/presentation/auth/pages/signinpage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SignUpPage extends StatelessWidget{
-  const SignUpPage({super.key});
+class SignInPage extends StatelessWidget{
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,7 @@ class SignUpPage extends StatelessWidget{
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children:[
-                SizedBox(height:30),
+                SizedBox(height:10),
                 _RegisterText(context),
                 SizedBox(height:15),
                 RichText(
@@ -59,6 +58,7 @@ class SignUpPage extends StatelessWidget{
                   ),
                 ),
                 SizedBox(height:40),
+                _FullNameTextField(),
                 SizedBox(height:30),
                 _EmailTextField(),
                 SizedBox(height:30),
@@ -99,12 +99,7 @@ class SignUpPage extends StatelessWidget{
                         ),
                         recognizer:TapGestureRecognizer()
                         ..onTap= () async {
-                             Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder:(context)=>SignInPage()
-                              )
-                             );
+
                         }
                       ),
                     ]
@@ -120,7 +115,7 @@ class SignUpPage extends StatelessWidget{
 
 Widget _RegisterText(BuildContext context){
   return Text(
-    "Sign in",
+    "Register",
     textAlign: TextAlign.center,
     style:TextStyle(
       fontSize:25,
