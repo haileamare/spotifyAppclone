@@ -1,6 +1,8 @@
 import 'package:clonespotify/core/configs/theme/app_theme.dart';
+import 'package:clonespotify/firebase_options.dart';
 import 'package:clonespotify/presentation/choosemode/bloc/themecubit.dart';
 import 'package:clonespotify/presentation/splash/pages/splash.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +26,9 @@ Future<void> main() async {
         : HydratedStorageDirectory((await getApplicationDocumentsDirectory()).path),
   );
 
+  await Firebase.initializeApp(
+    options:DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
