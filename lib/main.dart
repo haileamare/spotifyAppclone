@@ -1,6 +1,7 @@
 import 'package:clonespotify/core/configs/theme/app_theme.dart';
 import 'package:clonespotify/firebase_options.dart';
 import 'package:clonespotify/presentation/choosemode/bloc/themecubit.dart';
+import 'package:clonespotify/presentation/service_locatorinjection.dart';
 import 'package:clonespotify/presentation/splash/pages/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -25,7 +26,7 @@ Future<void> main() async {
         ? HydratedStorageDirectory.web
         : HydratedStorageDirectory((await getApplicationDocumentsDirectory()).path),
   );
-
+  setupServiceLocatorInjection();
   await Firebase.initializeApp(
     options:DefaultFirebaseOptions.currentPlatform,
   );
