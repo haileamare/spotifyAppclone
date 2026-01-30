@@ -2,11 +2,13 @@ import 'package:clonespotify/common/helpers/is_dark_mode.dart';
 import 'package:clonespotify/common/widgets/appbar/customappbar.dart';
 import 'package:clonespotify/common/widgets/button/common_button.dart';
 import 'package:clonespotify/core/configs/assets/app_vectors.dart';
+import 'package:clonespotify/core/configs/usecases/auth/usecase.dart';
 import 'package:clonespotify/data/models/createuserreq.dart';
 import 'package:clonespotify/domain/usecases/auth/signupusecase.dart';
 import 'package:clonespotify/presentation/auth/pages/signinpage.dart';
 import 'package:clonespotify/presentation/rootpage/pages/rootpage.dart';
 import 'package:clonespotify/presentation/service_locatorinjection.dart';
+import 'package:dartz/dartz.dart' hide State;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,9 +23,9 @@ class SignUpPage extends StatefulWidget{
 }
 class _SignUpPageState extends State<SignUpPage>{
 
-  final _emailController=sl<TextEditingController>();
-  final _nameController=sl<TextEditingController>();
-  final _passwordController=sl<TextEditingController>();
+  final _emailController=TextEditingController();
+  final _nameController=TextEditingController();
+  final _passwordController=TextEditingController();
  
   @override
   Widget build(BuildContext context) {
@@ -82,15 +84,17 @@ class _SignUpPageState extends State<SignUpPage>{
                     title:"Create Account",
                     height:70,
                     onPressed:() async{
-                      var result=await sl<Signupusecase>().call(
+                      print(_emailController.text.toString());
+                      var result=await sl<UseCases<Either,CreateUserReq>>(instanceName: "signup").call(
                        CreateUserReq(
-                        email: _nameController.text.toString(), 
-                        userName: _emailController.text.toString(), 
+                        email: _emailController.text.toString(), 
+                        userName: _nameController.text.toString(), 
                         password: _passwordController.text.toString())
                       );
 
                       result.fold(
                         (l) {
+                        
                           var snackbar=SnackBar(content:Text(l));
                           ScaffoldMessenger.of(context).showSnackBar(snackbar);
                         } ,
@@ -131,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage>{
                              Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder:(context)=>SignInPage()
+                                builder:(context)=>Rootpage()
                               )
                              );
                         }

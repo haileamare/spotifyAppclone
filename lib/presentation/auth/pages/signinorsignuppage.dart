@@ -4,6 +4,7 @@ import 'package:clonespotify/common/widgets/appbar/customappbar.dart';
 import 'package:clonespotify/common/widgets/button/common_button.dart';
 import 'package:clonespotify/core/configs/assets/app_images.dart';
 import 'package:clonespotify/core/configs/assets/app_vectors.dart';
+import 'package:clonespotify/presentation/auth/pages/signinpage.dart';
 import 'package:clonespotify/presentation/auth/pages/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -86,7 +87,15 @@ class SigninorSignupPage extends StatelessWidget{
                     Expanded(
                       flex:1,
                       child: TextButton(
-                        onPressed:(){},
+                        onPressed:(){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              
+                              builder:(context)=>SingInPage()
+                            ),
+                          );
+                        },
                         child:Text(
                           "Sign In",
                           style:TextStyle(

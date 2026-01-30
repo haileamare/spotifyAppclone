@@ -1,4 +1,5 @@
 import 'package:clonespotify/data/models/createuserreq.dart';
+import 'package:clonespotify/data/models/signinreq.dart';
 import 'package:clonespotify/data/sources/auth/auth_firebase_service.dart';
 import 'package:clonespotify/domain/repositories/auth/authrepository.dart';
 import 'package:clonespotify/presentation/service_locatorinjection.dart';
@@ -13,8 +14,8 @@ class AuthResoritoryimpl implements AuthRepository{
   }
   
   @override
-  Future<Either<dynamic, dynamic>> signIn(CreateUserReq createUserReq) {
-    // TODO: implement signIn
-    throw UnimplementedError();
+  Future<Either> signIn(Signinreq req) async{
+     var result=await sl<AuthFirebaseService>().signIn(req!);
+     return result;
   }
 }
