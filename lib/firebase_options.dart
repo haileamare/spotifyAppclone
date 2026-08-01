@@ -83,4 +83,5 @@ class DefaultFirebaseOptions {
     authDomain: 'spotifycloneha.firebaseapp.com',
     storageBucket: 'spotifycloneha.firebasestorage.app',
   );
+
 }

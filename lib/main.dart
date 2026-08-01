@@ -1,20 +1,22 @@
 import 'package:clonespotify/core/configs/theme/app_theme.dart';
+import 'package:clonespotify/core/services/push_notification_service.dart';
 import 'package:clonespotify/firebase_options.dart';
 import 'package:clonespotify/presentation/choosemode/bloc/themecubit.dart';
 import 'package:clonespotify/presentation/service_locatorinjection.dart';
 import 'package:clonespotify/presentation/splash/pages/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:path_provider/path_provider.dart';
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,8 +30,16 @@ Future<void> main() async {
   );
   setupServiceLocatorInjection();
   await Firebase.initializeApp(
-    options:DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  if (!kIsWeb) {
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
+
+  final pushService = sl<PushNotificationService>();
+  await pushService.init();
+
   runApp(const MyApp());
 }
 
