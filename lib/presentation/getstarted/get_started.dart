@@ -16,7 +16,7 @@ class GetStartedPage extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('images/intro_bg.png'),
+                image: AssetImage('assets/images/intro_bg.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -28,7 +28,7 @@ class GetStartedPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SvgPicture.asset(
-                  'vectors/spotify_logo.svg',
+                  'assets/vectors/spotify_logo.svg',
                   width: 70,
                   height: 70,
                 ),

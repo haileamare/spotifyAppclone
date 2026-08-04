@@ -10,17 +10,21 @@ import 'package:clonespotify/domain/usecases/auth/signupusecase.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
+import 'package:clonespotify/presentation/navigation/navigation_service.dart';
 
 final sl = GetIt.asNewInstance();
 
 void setupServiceLocatorInjection(){
+  // MUST be registerLazySingleton or registerSingleton (NOT registerFactory)
   sl.registerSingleton<AuthRepository>(AuthResoritoryimpl());
   sl.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImpl());
   sl.registerSingleton<UseCases<Either,CreateUserReq>>(Signupusecase(),instanceName:"signup");
   sl.registerSingleton<UseCases<Either,Signinreq>>(Signinusecase(),instanceName:"signin");
   sl.registerSingleton<Signupusecase>(Signupusecase(), instanceName: "signup");
+  sl.registerSingleton<NavigationService>(NavigationService());
   sl.registerLazySingleton<PushNotificationService>(() => PushNotificationService());
   sl.registerSingleton<TextEditingController>(TextEditingController(),
+  
   instanceName: 'name',
   dispose: (controller)=>controller.dispose());
     sl.registerSingleton<TextEditingController>(TextEditingController(),
